@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MuseumDataBaseModelContainer" CdmEntityContainer="MuseumDataBaseEntities">
+    <EntitySetMapping Name="ActInstance">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.ActInstance">
+        <MappingFragment StoreEntitySet="ActInstance">
+          <ScalarProperty Name="ActInstanceId" ColumnName="ActInstanceId" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="MovementActId" ColumnName="MovementActId" />
+          <ScalarProperty Name="MuseumFondId" ColumnName="MuseumFondId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Author">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.Author">
+        <MappingFragment StoreEntitySet="Author">
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="AuthorSurname" ColumnName="AuthorSurname" />
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="AuthorPayronymic" ColumnName="AuthorPayronymic" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactPerson">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.ContactPerson">
+        <MappingFragment StoreEntitySet="ContactPerson">
+          <ScalarProperty Name="ContactPersonId" ColumnName="ContactPersonId" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DateType">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.DateType">
+        <MappingFragment StoreEntitySet="DateType">
+          <ScalarProperty Name="DateTypeId" ColumnName="DateTypeId" />
+          <ScalarProperty Name="DateTypeName" ColumnName="DateTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+          <ScalarProperty Name="Post" ColumnName="Post" />
+          <ScalarProperty Name="MuseumFondId" ColumnName="MuseumFondId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exhibition">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.Exhibition">
+        <MappingFragment StoreEntitySet="Exhibition">
+          <ScalarProperty Name="ExhibitionId" ColumnName="ExhibitionId" />
+          <ScalarProperty Name="ExhibitionName" ColumnName="ExhibitionName" />
+          <ScalarProperty Name="ExhibitionAdress" ColumnName="ExhibitionAdress" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Item">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="DateTypeId" ColumnName="DateTypeId" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemInstance">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.ItemInstance">
+        <MappingFragment StoreEntitySet="ItemInstance">
+          <ScalarProperty Name="ItemInstanceId" ColumnName="ItemInstanceId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="MuseumFondId" ColumnName="MuseumFondId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemsHistory">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.ItemsHistory">
+        <MappingFragment StoreEntitySet="ItemsHistory">
+          <ScalarProperty Name="ItemsHistoryId" ColumnName="ItemsHistoryId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="ExhibitionId" ColumnName="ExhibitionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemsSet">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.ItemsSet">
+        <MappingFragment StoreEntitySet="ItemsSet">
+          <ScalarProperty Name="ItemsSetId" ColumnName="ItemsSetId" />
+          <ScalarProperty Name="ItemsSetName" ColumnName="ItemsSetName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemState">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.ItemState">
+        <MappingFragment StoreEntitySet="ItemState">
+          <ScalarProperty Name="ItemStateId" ColumnName="ItemStateId" />
+          <ScalarProperty Name="ItemStateName" ColumnName="ItemStateName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovementAct">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.MovementAct">
+        <MappingFragment StoreEntitySet="MovementAct">
+          <ScalarProperty Name="MovementActId" ColumnName="MovementActId" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="ItemsSetId" ColumnName="ItemsSetId" />
+          <ScalarProperty Name="ItemStateId" ColumnName="ItemStateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MuseumFond">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.MuseumFond">
+        <MappingFragment StoreEntitySet="MuseumFond">
+          <ScalarProperty Name="MuseumFondId" ColumnName="MuseumFondId" />
+          <ScalarProperty Name="FondName" ColumnName="FondName" />
+          <ScalarProperty Name="Spezialization" ColumnName="Spezialization" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organization">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.Organization">
+        <MappingFragment StoreEntitySet="Organization">
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+          <ScalarProperty Name="OrganizationAdress" ColumnName="OrganizationAdress" />
+          <ScalarProperty Name="OrganizationPhone" ColumnName="OrganizationPhone" />
+          <ScalarProperty Name="ContactPersonId" ColumnName="ContactPersonId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SetInstance">
+      <EntityTypeMapping TypeName="MuseumDataBaseModel.SetInstance">
+        <MappingFragment StoreEntitySet="SetInstance">
+          <ScalarProperty Name="SetInstanceId" ColumnName="SetInstanceId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="ItemsSetId" ColumnName="ItemsSetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

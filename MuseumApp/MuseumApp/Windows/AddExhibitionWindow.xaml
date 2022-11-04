@@ -1,0 +1,23 @@
+﻿<Window x:Class="MuseumApp.Windows.AddExhibitionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MuseumApp.Windows"
+        mc:Ignorable="d"
+        Title="AddExhibitionWindow" Height="250" Width="300">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" x:Name="textbox_2" Margin="96,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" FontFamily="Bahnschrift" Height="40"/>
+        <TextBox HorizontalAlignment="Left" x:Name="textbox_3" Margin="96,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" FontFamily="Bahnschrift"/>
+        <TextBox HorizontalAlignment="Left" x:Name="textbox_4" Margin="96,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" FontFamily="Bahnschrift"/>
+        <Label Content="Exh name" HorizontalAlignment="Left" Margin="11,9,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift"/>
+        <Label Content="Exh address" HorizontalAlignment="Left" Margin="11,53,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift"/>
+        <Label Content="StartDate" Margin="11,105,136,0" VerticalAlignment="Top" FontFamily="Bahnschrift"/>
+        <Label Content="EndDate" Margin="11,129,136,0" VerticalAlignment="Top" FontFamily="Bahnschrift"/>
+        <Button Content="Add Exhibition" Name="upd_exh_button" FontFamily="Bahnschrift" HorizontalAlignment="Left" Margin="60,158,0,0" VerticalAlignment="Top" Height="31" Width="137" Click="upd_exh_button_Click"/>
+        <TextBox HorizontalAlignment="Left" x:Name="textbox_5" Margin="96,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" FontFamily="Bahnschrift"/>
+        <Label Content="OrganizationID" Margin="11,81,136,0" VerticalAlignment="Top" FontFamily="Bahnschrift"/>
+        <TextBox HorizontalAlignment="Left" x:Name="textbox_6" Margin="96,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" FontFamily="Bahnschrift"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,21 @@
+﻿<Window x:Class="MuseumApp.Windows.UpdateItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MuseumApp.Windows"
+        mc:Ignorable="d"
+        Title="UpdateItemWindow" Height="250" Width="300">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Name="textbox_1" Margin="84,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Bahnschrift"/>
+        <TextBox HorizontalAlignment="Left" x:Name="textbox_2" Margin="84,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Bahnschrift"/>
+        <TextBox HorizontalAlignment="Left" x:Name="textbox_3" Margin="84,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Bahnschrift"/>
+        <TextBox HorizontalAlignment="Left" x:Name="textbox_4" Margin="84,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Bahnschrift"/>
+        <Label Content="AuthorID" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift"/>
+        <Label Content="ItemName" HorizontalAlignment="Left" Margin="11,30,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift"/>
+        <Label Content="CreateDate" HorizontalAlignment="Left" Margin="11,54,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift"/>
+        <Label Content="ItemTypeID" Margin="10,78,137,0" VerticalAlignment="Top" FontFamily="Bahnschrift"/>
+        <Button Content="Add Item" Name="add_item_button" FontFamily="Bahnschrift" HorizontalAlignment="Left" Margin="38,129,0,0" VerticalAlignment="Top" Height="31" Width="137" Click="add_item_button_Click"/>
+
+    </Grid>
+</Window>

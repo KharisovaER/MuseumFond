@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MuseumDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ActInstance">
+    <Key>
+      <PropertyRef Name="ActInstanceId" />
+    </Key>
+    <Property Name="ActInstanceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrganizationId" Type="Int32" Nullable="false" />
+    <Property Name="MovementActId" Type="Int32" Nullable="false" />
+    <Property Name="MuseumFondId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MovementAct" Relationship="Self.FK_ActInstance_MovementAct" FromRole="ActInstance" ToRole="MovementAct" />
+    <NavigationProperty Name="MuseumFond" Relationship="Self.FK_ActInstance_MuseumFond" FromRole="ActInstance" ToRole="MuseumFond" />
+    <NavigationProperty Name="Organization" Relationship="Self.FK_ActInstance_Organization" FromRole="ActInstance" ToRole="Organization" />
+  </EntityType>
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="AuthorId" />
+    </Key>
+    <Property Name="AuthorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorSurname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AuthorName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AuthorPayronymic" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDate" Type="DateTime" Precision="3" />
+    <Property Name="Country" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_Item_Author" FromRole="Author" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="ContactPerson">
+    <Key>
+      <PropertyRef Name="ContactPersonId" />
+    </Key>
+    <Property Name="ContactPersonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Organization" Relationship="Self.FK_Organization_ContactPerson" FromRole="ContactPerson" ToRole="Organization" />
+  </EntityType>
+  <EntityType Name="DateType">
+    <Key>
+      <PropertyRef Name="DateTypeId" />
+    </Key>
+    <Property Name="DateTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateTypeName" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_Item_DateType" FromRole="DateType" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Post" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MuseumFondId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MuseumFond" Relationship="Self.FK_Employee_MuseumFond" FromRole="Employee" ToRole="MuseumFond" />
+    <NavigationProperty Name="MovementAct" Relationship="Self.FK_MovementAct_Employee" FromRole="Employee" ToRole="MovementAct" />
+  </EntityType>
+  <EntityType Name="Exhibition">
+    <Key>
+      <PropertyRef Name="ExhibitionId" />
+    </Key>
+    <Property Name="ExhibitionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExhibitionName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExhibitionAdress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="OrganizationId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Organization" Relationship="Self.FK_Exhibition_Organization" FromRole="Exhibition" ToRole="Organization" />
+    <NavigationProperty Name="ItemsHistory" Relationship="Self.FK_ItemsHistory_Exhibition" FromRole="Exhibition" ToRole="ItemsHistory" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateTypeId" Type="Int32" Nullable="false" />
+    <Property Name="AuthorId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Author" Relationship="Self.FK_Item_Author" FromRole="Item" ToRole="Author" />
+    <NavigationProperty Name="DateType" Relationship="Self.FK_Item_DateType" FromRole="Item" ToRole="DateType" />
+    <NavigationProperty Name="ItemInstance" Relationship="Self.FK_ItemInstance_Item" FromRole="Item" ToRole="ItemInstance" />
+    <NavigationProperty Name="ItemsHistory" Relationship="Self.FK_ItemsHistory_Item" FromRole="Item" ToRole="ItemsHistory" />
+    <NavigationProperty Name="SetInstance" Relationship="Self.FK_SetInstance_Item" FromRole="Item" ToRole="SetInstance" />
+  </EntityType>
+  <EntityType Name="ItemInstance">
+    <Key>
+      <PropertyRef Name="ItemInstanceId" />
+    </Key>
+    <Property Name="ItemInstanceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="MuseumFondId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_ItemInstance_Item" FromRole="ItemInstance" ToRole="Item" />
+    <NavigationProperty Name="MuseumFond" Relationship="Self.FK_ItemInstance_MuseumFond" FromRole="ItemInstance" ToRole="MuseumFond" />
+  </EntityType>
+  <EntityType Name="ItemsHistory">
+    <Key>
+      <PropertyRef Name="ItemsHistoryId" />
+    </Key>
+    <Property Name="ItemsHistoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="ExhibitionId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Exhibition" Relationship="Self.FK_ItemsHistory_Exhibition" FromRole="ItemsHistory" ToRole="Exhibition" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_ItemsHistory_Item" FromRole="ItemsHistory" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="ItemsSet">
+    <Key>
+      <PropertyRef Name="ItemsSetId" />
+    </Key>
+    <Property Name="ItemsSetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemsSetName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MovementAct" Relationship="Self.FK_MovementAct_ItemsSet" FromRole="ItemsSet" ToRole="MovementAct" />
+    <NavigationProperty Name="SetInstance" Relationship="Self.FK_SetInstance_ItemsSet" FromRole="ItemsSet" ToRole="SetInstance" />
+  </EntityType>
+  <EntityType Name="ItemState">
+    <Key>
+      <PropertyRef Name="ItemStateId" />
+    </Key>
+    <Property Name="ItemStateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemStateName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MovementAct" Relationship="Self.FK_MovementAct_ItemState" FromRole="ItemState" ToRole="MovementAct" />
+  </EntityType>
+  <EntityType Name="MovementAct">
+    <Key>
+      <PropertyRef Name="MovementActId" />
+    </Key>
+    <Property Name="MovementActId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpId" Type="Int32" Nullable="false" />
+    <Property Name="ItemsSetId" Type="Int32" Nullable="false" />
+    <Property Name="ItemStateId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ActInstance" Relationship="Self.FK_ActInstance_MovementAct" FromRole="MovementAct" ToRole="ActInstance" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_MovementAct_Employee" FromRole="MovementAct" ToRole="Employee" />
+    <NavigationProperty Name="ItemsSet" Relationship="Self.FK_MovementAct_ItemsSet" FromRole="MovementAct" ToRole="ItemsSet" />
+    <NavigationProperty Name="ItemState" Relationship="Self.FK_MovementAct_ItemState" FromRole="MovementAct" ToRole="ItemState" />
+  </EntityType>
+  <EntityType Name="MuseumFond">
+    <Key>
+      <PropertyRef Name="MuseumFondId" />
+    </Key>
+    <Property Name="MuseumFondId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FondName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Spezialization" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ActInstance" Relationship="Self.FK_ActInstance_MuseumFond" FromRole="MuseumFond" ToRole="ActInstance" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_MuseumFond" FromRole="MuseumFond" ToRole="Employee" />
+    <NavigationProperty Name="ItemInstance" Relationship="Self.FK_ItemInstance_MuseumFond" FromRole="MuseumFond" ToRole="ItemInstance" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="OrganizationId" />
+    </Key>
+    <Property Name="OrganizationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrganizationName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrganizationAdress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrganizationPhone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContactPersonId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ActInstance" Relationship="Self.FK_ActInstance_Organization" FromRole="Organization" ToRole="ActInstance" />
+    <NavigationProperty Name="ContactPerson" Relationship="Self.FK_Organization_ContactPerson" FromRole="Organization" ToRole="ContactPerson" />
+    <NavigationProperty Name="Exhibition" Relationship="Self.FK_Exhibition_Organization" FromRole="Organization" ToRole="Exhibition" />
+  </EntityType>
+  <EntityType Name="SetInstance">
+    <Key>
+      <PropertyRef Name="SetInstanceId" />
+    </Key>
+    <Property Name="SetInstanceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="ItemsSetId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_SetInstance_Item" FromRole="SetInstance" ToRole="Item" />
+    <NavigationProperty Name="ItemsSet" Relationship="Self.FK_SetInstance_ItemsSet" FromRole="SetInstance" ToRole="ItemsSet" />
+  </EntityType>
+  <Association Name="FK_ActInstance_MovementAct">
+    <End Role="MovementAct" Type="Self.MovementAct" Multiplicity="1" />
+    <End Role="ActInstance" Type="Self.ActInstance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MovementAct">
+        <PropertyRef Name="MovementActId" />
+      </Principal>
+      <Dependent Role="ActInstance">
+        <PropertyRef Name="MovementActId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActInstance_MuseumFond">
+    <End Role="MuseumFond" Type="Self.MuseumFond" Multiplicity="1" />
+    <End Role="ActInstance" Type="Self.ActInstance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MuseumFond">
+        <PropertyRef Name="MuseumFondId" />
+      </Principal>
+      <Dependent Role="ActInstance">
+        <PropertyRef Name="MuseumFondId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActInstance_Organization">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+    <End Role="ActInstance" Type="Self.ActInstance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="ActInstance">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Item_Author">
+    <End Role="Author" Type="Self.Author" Multiplicity="1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Author">
+        <PropertyRef Name="AuthorId" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Organization_ContactPerson">
+    <End Role="ContactPerson" Type="Self.ContactPerson" Multiplicity="1" />
+    <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContactPerson">
+        <PropertyRef Name="ContactPersonId" />
+      </Principal>
+      <Dependent Role="Organization">
+        <PropertyRef Name="ContactPersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Item_DateType">
+    <End Role="DateType" Type="Self.DateType" Multiplicity="1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DateType">
+        <PropertyRef Name="DateTypeId" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="DateTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_MuseumFond">
+    <End Role="MuseumFond" Type="Self.MuseumFond" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MuseumFond">
+        <PropertyRef Name="MuseumFondId" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="MuseumFondId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementAct_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="MovementAct" Type="Self.MovementAct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="MovementAct">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Exhibition_Organization">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+    <End Role="Exhibition" Type="Self.Exhibition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="Exhibition">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemsHistory_Exhibition">
+    <End Role="Exhibition" Type="Self.Exhibition" Multiplicity="1" />
+    <End Role="ItemsHistory" Type="Self.ItemsHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exhibition">
+        <PropertyRef Name="ExhibitionId" />
+      </Principal>
+      <Dependent Role="ItemsHistory">
+        <PropertyRef Name="ExhibitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemInstance_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="ItemInstance" Type="Self.ItemInstance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="ItemInstance">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemsHistory_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="ItemsHistory" Type="Self.ItemsHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="ItemsHistory">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SetInstance_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="SetInstance" Type="Self.SetInstance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="SetInstance">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemInstance_MuseumFond">
+    <End Role="MuseumFond" Type="Self.MuseumFond" Multiplicity="1" />
+    <End Role="ItemInstance" Type="Self.ItemInstance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MuseumFond">
+        <PropertyRef Name="MuseumFondId" />
+      </Principal>
+      <Dependent Role="ItemInstance">
+        <PropertyRef Name="MuseumFondId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementAct_ItemsSet">
+    <End Role="ItemsSet" Type="Self.ItemsSet" Multiplicity="1" />
+    <End Role="MovementAct" Type="Self.MovementAct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemsSet">
+        <PropertyRef Name="ItemsSetId" />
+      </Principal>
+      <Dependent Role="MovementAct">
+        <PropertyRef Name="ItemsSetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SetInstance_ItemsSet">
+    <End Role="ItemsSet" Type="Self.ItemsSet" Multiplicity="1" />
+    <End Role="SetInstance" Type="Self.SetInstance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemsSet">
+        <PropertyRef Name="ItemsSetId" />
+      </Principal>
+      <Dependent Role="SetInstance">
+        <PropertyRef Name="ItemsSetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementAct_ItemState">
+    <End Role="ItemState" Type="Self.ItemState" Multiplicity="1" />
+    <End Role="MovementAct" Type="Self.MovementAct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemState">
+        <PropertyRef Name="ItemStateId" />
+      </Principal>
+      <Dependent Role="MovementAct">
+        <PropertyRef Name="ItemStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MuseumDataBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ActInstance" EntityType="Self.ActInstance" />
+    <EntitySet Name="Author" EntityType="Self.Author" />
+    <EntitySet Name="ContactPerson" EntityType="Self.ContactPerson" />
+    <EntitySet Name="DateType" EntityType="Self.DateType" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
+    <EntitySet Name="Exhibition" EntityType="Self.Exhibition" />
+    <EntitySet Name="Item" EntityType="Self.Item" />
+    <EntitySet Name="ItemInstance" EntityType="Self.ItemInstance" />
+    <EntitySet Name="ItemsHistory" EntityType="Self.ItemsHistory" />
+    <EntitySet Name="ItemsSet" EntityType="Self.ItemsSet" />
+    <EntitySet Name="ItemState" EntityType="Self.ItemState" />
+    <EntitySet Name="MovementAct" EntityType="Self.MovementAct" />
+    <EntitySet Name="MuseumFond" EntityType="Self.MuseumFond" />
+    <EntitySet Name="Organization" EntityType="Self.Organization" />
+    <EntitySet Name="SetInstance" EntityType="Self.SetInstance" />
+    <AssociationSet Name="FK_ActInstance_MovementAct" Association="Self.FK_ActInstance_MovementAct">
+      <End Role="MovementAct" EntitySet="MovementAct" />
+      <End Role="ActInstance" EntitySet="ActInstance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActInstance_MuseumFond" Association="Self.FK_ActInstance_MuseumFond">
+      <End Role="MuseumFond" EntitySet="MuseumFond" />
+      <End Role="ActInstance" EntitySet="ActInstance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActInstance_Organization" Association="Self.FK_ActInstance_Organization">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="ActInstance" EntitySet="ActInstance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Item_Author" Association="Self.FK_Item_Author">
+      <End Role="Author" EntitySet="Author" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organization_ContactPerson" Association="Self.FK_Organization_ContactPerson">
+      <End Role="ContactPerson" EntitySet="ContactPerson" />
+      <End Role="Organization" EntitySet="Organization" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Item_DateType" Association="Self.FK_Item_DateType">
+      <End Role="DateType" EntitySet="DateType" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_MuseumFond" Association="Self.FK_Employee_MuseumFond">
+      <End Role="MuseumFond" EntitySet="MuseumFond" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementAct_Employee" Association="Self.FK_MovementAct_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="MovementAct" EntitySet="MovementAct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Exhibition_Organization" Association="Self.FK_Exhibition_Organization">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="Exhibition" EntitySet="Exhibition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemsHistory_Exhibition" Association="Self.FK_ItemsHistory_Exhibition">
+      <End Role="Exhibition" EntitySet="Exhibition" />
+      <End Role="ItemsHistory" EntitySet="ItemsHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemInstance_Item" Association="Self.FK_ItemInstance_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="ItemInstance" EntitySet="ItemInstance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemsHistory_Item" Association="Self.FK_ItemsHistory_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="ItemsHistory" EntitySet="ItemsHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SetInstance_Item" Association="Self.FK_SetInstance_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="SetInstance" EntitySet="SetInstance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemInstance_MuseumFond" Association="Self.FK_ItemInstance_MuseumFond">
+      <End Role="MuseumFond" EntitySet="MuseumFond" />
+      <End Role="ItemInstance" EntitySet="ItemInstance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementAct_ItemsSet" Association="Self.FK_MovementAct_ItemsSet">
+      <End Role="ItemsSet" EntitySet="ItemsSet" />
+      <End Role="MovementAct" EntitySet="MovementAct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SetInstance_ItemsSet" Association="Self.FK_SetInstance_ItemsSet">
+      <End Role="ItemsSet" EntitySet="ItemsSet" />
+      <End Role="SetInstance" EntitySet="SetInstance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementAct_ItemState" Association="Self.FK_MovementAct_ItemState">
+      <End Role="ItemState" EntitySet="ItemState" />
+      <End Role="MovementAct" EntitySet="MovementAct" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

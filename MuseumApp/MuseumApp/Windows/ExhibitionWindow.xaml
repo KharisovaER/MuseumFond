@@ -1,0 +1,29 @@
+﻿<Window x:Class="MuseumApp.Windows.ExhibitionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MuseumApp.Windows"
+        mc:Ignorable="d"
+        Title="ExhibitionWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="Добавить"  Name="ex_add" HorizontalAlignment="Left" Margin="194,24,0,0" VerticalAlignment="Top" Height="19" Click="ex_add_Click"/>
+        <Button Content="Изменить" Name="ex_upd" HorizontalAlignment="Left" Margin="272,24,0,0" VerticalAlignment="Top" Click="ex_upd_Click"/>
+        <Button Content="Удалить" Name="ex_del" HorizontalAlignment="Left" Margin="348,24,0,0" VerticalAlignment="Top" Width="58" Click="ex_del_Click"/>
+        <DataGrid AutoGenerateColumns="False"  Name="Exhib_table" Margin="0,70,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ExhibitionName}" Header="Название" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding ExhibitionAdress}" Header="Адрес" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding StartDate}" Header="Начало выставки" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding EndDate}" Header="Конец выставки" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Organization.OrganizationName}" Header="Организовал" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Обновить" Name="upd_table" HorizontalAlignment="Left" Margin="119,24,0,0" VerticalAlignment="Top" Height="19" Click="upd_table_Click"/>
+        <TextBox HorizontalAlignment="Left" x:Name="id_tb" Margin="452,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Height="19"/>
+        <Button Content="X" x:Name="cancel_b" HorizontalAlignment="Left" Margin="596,24,0,0" VerticalAlignment="Top" Width="20" Background="Red" Height="19" Click="cancel_b_Click"/>
+        <Label Content="Id" x:Name="id_l" HorizontalAlignment="Left" Margin="432,22,0,0" VerticalAlignment="Top" Height="25"/>
+        <Button Content="Удалить" x:Name="item_dell" HorizontalAlignment="Left" Margin="529,24,0,0" VerticalAlignment="Top" Width="58" Click="item_dell_Click"/>
+        <Button Content="Экспорт в PDF" HorizontalAlignment="Left" Margin="19,25,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+    </Grid>
+</Window>
